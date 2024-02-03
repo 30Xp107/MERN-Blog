@@ -64,18 +64,19 @@ export default function SignUp() {
               <Label value='Your password'/>
               <TextInput type='password' placeholder='Password' id='password' onChange={handleChange}/>
             </div>
-            <Button gradientDuoTone='purpleToPink' type='handleSubmit'>Sign Up</Button>
+            <Button gradientDuoTone='purpleToPink' type='handleSubmit' disabled={loading}>
+              {
+                loading ? (
+                  <>
+                    <Spinner size='sm'  />
+                    <span className='pl-3'>Loading...</span>
+                  </>
+                ) : 'Sign Up'
+              }
+            </Button>
             <div className="flex gap-2 text-sm mt-5">
               <span>Have an account?</span>
-              <Link to='/sign-in' className='text-blue-500' disabled={loading}>
-                {
-                  loading ? (
-                    <>
-                      <Spinner size='sm' />
-                      <span className='pl-3'>Loading...</span>
-                    </>
-                  ) : ('Sign Up'
-                )}
+              <Link to='/sign-in' className='text-blue-500'>Sign In
               </Link>
             </div>
             {
