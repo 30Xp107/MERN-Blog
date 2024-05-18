@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import userRoutes from './routes/user.route.js'
 import authRoutes from './routes/auth.route.js'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 
 dotenv.config()
 
@@ -18,6 +19,7 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
+app.use(cookieParser())
 
 app.listen(3000, () => {
     console.log(`Server is running on port 3000`)
@@ -36,4 +38,4 @@ app.use((err, req, res, next) => {
     })
 })
 
-//3:36:44
+//4:57:47
