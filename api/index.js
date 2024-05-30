@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGO_URL)
 const app = express()
 
 app.use(cors())
-app.use(express.json())
+app.use(express.json()) 
 app.use(cookieParser())
 
 app.listen(3000, () => {

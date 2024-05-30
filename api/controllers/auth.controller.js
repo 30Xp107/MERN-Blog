@@ -44,11 +44,12 @@ export const signin = async (req, res, next) => {
         if(!validPassword) {
             return next(errorHandler(400, 'Invalid Password'))
         }
-        const token = jwt.sign({id: validUser._id}, process.env.JWT_SECRET, {expiresIn: '1d'})
+        const token = jwt.sign({id: validUser._id}, process.env.JWT_SECRET, {expiresIn: '1h'})
         const {password: pass, ...rest} = validUser._doc
         res.status(200).cookie('access_token', token, {
             httpOnly: true
-        }).json({rest, token})
+        }).json(rest)
+        console.log(rest);
     } catch (error) {
         return next(error)
     }
@@ -64,6 +65,7 @@ export const google = async(req, res, next) => {
             res.status(200).cookie('access_token', token, {
                 httpOnly: true,
             }).json(rest)
+            console.log(rest);
         } else {
             const generatePassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8)
             const hashedPassword = bcryptjs.hashSync(generatePassword, 10)

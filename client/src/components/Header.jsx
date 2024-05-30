@@ -3,15 +3,17 @@ import { Link, useLocation } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleTheme } from "../redux/theme/themeSlice.js" 
+import { toggleTheme } from "../redux/theme/themeSlice.js"
 
 export default function Header() {
     const path = useLocation().pathname
     const dispatch = useDispatch()  
     const { currentUser } = useSelector((state) => state.user)
     const { theme } = useSelector((state) => state.theme)
+    // console.log(currentUser.rest.username);
+    // console.log(currentUser.email);
   return (
-    // <Navbar className="fixed top-0 left-0 right-0 z-10 border-b-2">
+    /* <Navbar className="fixed top-0 left-0 right-0 z-10 border-b-2"> */
     <Navbar className="border-b-2">
         <Link to="/" className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white">
             <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-600 rounded-lg text-white">Sahand's</span>
