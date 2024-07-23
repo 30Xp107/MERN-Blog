@@ -8,11 +8,18 @@ import cookieParser from 'cookie-parser'
 
 dotenv.config()
 
+// const MongoConn = process.env.MONGO_URL || process.env.MONGO_LOCAL
+
 mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         console.log('MongoDb is connected')
     }).catch((err) => {
-        console.log(`Internet Connection Problem: ${err}`)
+        mongoose.connect(process.env.MONGO_LOCAL)
+        .then(() => {
+            console.log('MongoDb is connected')
+        }).catch((err) => {
+            console.log(`Internet Connection Problem: ${err}`)
+        })
 })
 
 const app = express()
@@ -21,8 +28,10 @@ app.use(cors())
 app.use(express.json()) 
 app.use(cookieParser())
 
-app.listen(3000, () => {
-    console.log(`Server is running on port 3000`)
+const PORT = process.env.PORT || 3001
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`)
 })
 
 app.use('/api/user', userRoutes)
@@ -38,4 +47,4 @@ app.use((err, req, res, next) => {
     })
 })
 
-//4:57:47
+//5:16:21
