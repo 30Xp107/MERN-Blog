@@ -6,16 +6,19 @@ import SignIn from './pages/SignIn.jsx'
 import SignUp from './pages/SignUp.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import Projects from './pages/Projects.jsx'
-import SidebarNavbar from './components/Header.jsx'
+import NavbarHeader from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import PrivateRoute from './components/PrivateRoute.jsx'
 import CreatePost from './pages/CreatePost.jsx'
 import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute.jsx'
+import { Sidebar } from 'flowbite-react'
 
 export default function App() {
   return (
     <BrowserRouter>
-    <SidebarNavbar />
+    <NavbarHeader>
+      {/* <Sidebar/> */}
+    </NavbarHeader>
     {/* <SideBar /> */}
       <Routes>
         <Route path="/" element={<Home />}></Route>
